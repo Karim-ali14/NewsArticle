@@ -13,17 +13,23 @@ data class Article(
     @SerializedName("byline")
     val byline: String,
     @SerializedName("column")
-    val column: String,
+    val column: Any,
     @SerializedName("des_facet")
     val desFacet: List<String>,
     @SerializedName("eta_id")
     val etaId: Int,
+    @SerializedName("geo_facet")
+    val geoFacet: List<String>,
     @SerializedName("id")
     val id: Long,
     @SerializedName("media")
     val media: List<Media>,
     @SerializedName("nytdsection")
     val nytdsection: String,
+    @SerializedName("org_facet")
+    val orgFacet: List<String>,
+    @SerializedName("per_facet")
+    val perFacet: List<String>,
     @SerializedName("published_date")
     val publishedDate: String,
     @SerializedName("section")

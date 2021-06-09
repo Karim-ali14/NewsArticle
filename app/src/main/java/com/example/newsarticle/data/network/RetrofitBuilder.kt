@@ -11,7 +11,7 @@ object RetrofitBuilder {
 
     private fun getRetrofitClient() : Retrofit{
         return Retrofit.Builder()
-            .baseUrl(Constants.Links.Base_Url)
+            .baseUrl(Constants.Links.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(OkHttpClient.Builder()
                 .readTimeout(30,TimeUnit.SECONDS)
