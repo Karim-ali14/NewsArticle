@@ -48,4 +48,18 @@ data class Article(
     val uri: String,
     @SerializedName("url")
     val url: String
-)
+){
+
+    fun getImageUrl():String {
+        return if (!media.isNullOrEmpty()){
+            if (!media[0].mediaMetadata.isNullOrEmpty()){
+                media[0].mediaMetadata[0].url
+            }else{
+                ""
+            }
+        }else{
+            ""
+        }
+    }
+
+}

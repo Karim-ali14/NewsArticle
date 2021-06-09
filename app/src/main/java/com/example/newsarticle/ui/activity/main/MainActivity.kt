@@ -27,7 +27,8 @@ class MainActivity : AppCompatActivity() {
 
         setupObservables()
     }
-    fun setupObservables(){
+
+    private fun setupObservables(){
         mainViewModel.articleList.observe(this, Observer { articleList ->
             Log.i(MAIN_ACTIVITY_TAG,articleList.toString())
         })
