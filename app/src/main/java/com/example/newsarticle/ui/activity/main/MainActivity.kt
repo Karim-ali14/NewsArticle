@@ -2,11 +2,11 @@ package com.example.newsarticle.ui.activity.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.newsarticle.common.binder.viewBinding
-import com.example.newsarticle.common.util.Constants
+import com.example.newsarticle.common.extension.openDetailActivity
+import com.example.newsarticle.data.model.article.Article
 import com.example.newsarticle.data.network.ApiHelper
 import com.example.newsarticle.data.network.RetrofitBuilder
 import com.example.newsarticle.databinding.ActivityMainBinding
@@ -33,9 +33,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupObservables(){
         mainViewModel.articleList.observe(this, Observer { articleList ->
-            val articleAdapter = ArticleAdapter(articleList)
+            val articleAdapter = ArticleAdapter(articleList,this)
             binding.articleRecycler.setHasFixedSize(true)
             binding.articleAdapter = articleAdapter
         })
+    }
+
+    fun openDetail(article: Article){
+        openDetailActivity(article)
     }
 }

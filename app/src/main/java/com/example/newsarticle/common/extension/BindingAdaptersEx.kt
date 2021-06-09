@@ -4,6 +4,7 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
+import com.example.newsarticle.R
 
 /////////////////////////////////////////////////////////////////////////
 // ImageViews Adapters.
@@ -17,6 +18,8 @@ fun ImageView.glideImageUrl(url:String?){
                 .with(this)
                 .load(url)
                 .into(this)
+        }else{
+            this.setImageResource(R.drawable.ic_launcher_background)
         }
     }
 }

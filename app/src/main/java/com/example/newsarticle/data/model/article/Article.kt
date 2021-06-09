@@ -2,6 +2,7 @@ package com.example.newsarticle.data.model.article
 
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class Article(
     @SerializedName("abstract")
@@ -48,7 +49,7 @@ data class Article(
     val uri: String,
     @SerializedName("url")
     val url: String
-){
+):Serializable{
 
     fun getImageUrl():String { // for get Any Photo as Article Photo this just for test ^_-
         return if (!media.isNullOrEmpty()){

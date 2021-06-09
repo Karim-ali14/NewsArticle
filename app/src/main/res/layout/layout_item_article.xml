@@ -8,13 +8,17 @@
         <variable
             name="article"
             type="com.example.newsarticle.data.model.article.Article" />
+        <variable
+            name="mainActivity"
+            type="com.example.newsarticle.ui.activity.main.MainActivity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="@dimen/_10ssp"
-        android:paddingVertical="@dimen/_10ssp">
+        android:paddingVertical="@dimen/_10ssp"
+        android:onClick="@{() -> mainActivity.openDetail(article)}">
 
         <ImageView
             android:layout_width="@dimen/_50sdp"
