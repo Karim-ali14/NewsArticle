@@ -50,7 +50,7 @@ data class Article(
     val url: String
 ){
 
-    fun getImageUrl():String {
+    fun getImageUrl():String { // for get Any Photo as Article Photo this just for test ^_-
         return if (!media.isNullOrEmpty()){
             if (!media[0].mediaMetadata.isNullOrEmpty()){
                 media[0].mediaMetadata[0].url

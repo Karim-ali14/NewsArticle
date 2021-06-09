@@ -13,6 +13,7 @@ import com.example.newsarticle.data.network.ApiService
 import com.example.newsarticle.data.network.RetrofitBuilder
 import com.example.newsarticle.data.repository.MainRepository
 import com.example.newsarticle.databinding.ActivityMainBinding
+import com.example.newsarticle.ui.adapter.ArticleAdapter
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,7 +31,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupObservables(){
         mainViewModel.articleList.observe(this, Observer { articleList ->
-            Log.i(MAIN_ACTIVITY_TAG,articleList.toString())
+            val articleAdapter = ArticleAdapter(articleList)
+            binding.articleRecycler.setHasFixedSize(true)
+            binding.articleRecycler.adapter = articleAdapter
         })
     }
 }
