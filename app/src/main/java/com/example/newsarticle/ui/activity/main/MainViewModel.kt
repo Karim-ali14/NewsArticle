@@ -12,13 +12,13 @@ import kotlinx.coroutines.launch
 class MainViewModel(private val repository: MainRepository) :ViewModel(){
 
     private val _isLoading = MutableLiveData<Boolean>()
-    val isLoading:LiveData<Boolean> get() =  _isLoading
+    val isLoading:LiveData<Boolean> get() = _isLoading
 
     private val _isError = MutableLiveData<Boolean>()
-    val isError:LiveData<Boolean> get() =  _isError
+    val isError:LiveData<Boolean> get() = _isError
 
     private val _articleList = MutableLiveData<ArrayList<Article>>()
-    val articleList:LiveData<ArrayList<Article>> get() =  _articleList
+    val articleList:LiveData<ArrayList<Article>> get() = _articleList
 
     init {
         loadArticleList()

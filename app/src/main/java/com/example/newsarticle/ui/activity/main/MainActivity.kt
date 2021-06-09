@@ -5,13 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.newsarticle.R
 import com.example.newsarticle.common.binder.viewBinding
-import com.example.newsarticle.common.util.Constants.Tags.MAIN_ACTIVITY_TAG
+import com.example.newsarticle.common.util.Constants
 import com.example.newsarticle.data.network.ApiHelper
-import com.example.newsarticle.data.network.ApiService
 import com.example.newsarticle.data.network.RetrofitBuilder
-import com.example.newsarticle.data.repository.MainRepository
 import com.example.newsarticle.databinding.ActivityMainBinding
 import com.example.newsarticle.ui.adapter.ArticleAdapter
 
@@ -19,12 +16,17 @@ class MainActivity : AppCompatActivity() {
 
     private val binding by viewBinding(ActivityMainBinding::inflate)
     private lateinit var mainViewModel: MainViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
         mainViewModel = ViewModelProvider(this,
             MainViewModelFactory(ApiHelper(RetrofitBuilder.getApiService())))
             .get(MainViewModel::class.java)
+
+        binding.mainViewModel = mainViewModel
+        binding.lifecycleOwner = this
 
         setupObservables()
     }
@@ -33,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.articleList.observe(this, Observer { articleList ->
             val articleAdapter = ArticleAdapter(articleList)
             binding.articleRecycler.setHasFixedSize(true)
-            binding.articleRecycler.adapter = articleAdapter
+            binding.articleAdapter = articleAdapter
         })
     }
 }
