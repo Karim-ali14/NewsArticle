@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">NewsArticle</string>
+
+    <string name="message_no_connection">No Internet Connection</string>
+    <string name="message_connection_back">You are now connected</string>
+
 </resources>

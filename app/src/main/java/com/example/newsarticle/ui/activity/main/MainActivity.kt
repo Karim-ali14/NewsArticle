@@ -10,6 +10,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.newsarticle.common.binder.viewBinding
 import com.example.newsarticle.common.extension.openDetailActivity
+import com.example.newsarticle.common.extension.showConnectionBackMessage
+import com.example.newsarticle.common.extension.showNoConnectionMessage
 import com.example.newsarticle.common.util.Constants
 import com.example.newsarticle.data.model.article.Article
 import com.example.newsarticle.data.network.ApiHelper
@@ -60,16 +62,24 @@ class MainActivity : AppCompatActivity() {
             override fun onReceive(context: Context?, intent: Intent?) {
                 when(intent?.action){
                     Constants.Actions.CONNECTION_BACK -> {
+                        showConnectionBackMessage()
                         mainViewModel.connectionChange(true)
                     }
                     Constants.Actions.CONNECTION_LOST -> {
+                        showNoConnectionMessage()
                         mainViewModel.connectionChange(false)
                     }
                 }
             }
         }
-        //register
+        //Register Receivers.
         registerReceiver(connectionBroadcastReceiver, IntentFilter(Constants.Actions.CONNECTION_BACK))
         registerReceiver(connectionBroadcastReceiver, IntentFilter(Constants.Actions.CONNECTION_LOST))
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Unregister receiver
+        unregisterReceiver(connectionBroadcastReceiver)
     }
 }
