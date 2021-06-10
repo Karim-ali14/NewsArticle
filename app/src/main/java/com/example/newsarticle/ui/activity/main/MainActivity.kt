@@ -44,6 +44,11 @@ class MainActivity : AppCompatActivity() {
             binding.articleRecycler.setHasFixedSize(true)
             binding.articleAdapter = articleAdapter
         })
+
+        mainViewModel.connectionStatus.observe(this, Observer { isConnected ->
+            if (isConnected)
+                mainViewModel.loadArticleList()
+        })
     }
 
     fun openDetail(article: Article){
@@ -55,10 +60,10 @@ class MainActivity : AppCompatActivity() {
             override fun onReceive(context: Context?, intent: Intent?) {
                 when(intent?.action){
                     Constants.Actions.CONNECTION_BACK -> {
-
+                        mainViewModel.connectionChange(true)
                     }
                     Constants.Actions.CONNECTION_LOST -> {
-
+                        mainViewModel.connectionChange(false)
                     }
                 }
             }

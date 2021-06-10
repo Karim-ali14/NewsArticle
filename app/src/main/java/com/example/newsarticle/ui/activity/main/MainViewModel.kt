@@ -20,6 +20,10 @@ class MainViewModel(private val repository: MainRepository) :ViewModel(){
     private val _articleList = MutableLiveData<ArrayList<Article>>()
     val articleList:LiveData<ArrayList<Article>> get() = _articleList
 
+
+    private val _connectionStatus = MutableLiveData<Boolean>()
+    val connectionStatus:LiveData<Boolean> get() = _connectionStatus
+
     init {
         loadArticleList()
     }
@@ -37,5 +41,7 @@ class MainViewModel(private val repository: MainRepository) :ViewModel(){
         }
     }
 
-
+    fun connectionChange(newValue: Boolean){
+        _connectionStatus.postValue(newValue)
+    }
 }
