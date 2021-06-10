@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         openDetailActivity(article)
     }
 
-    fun registerReceiver(){
+    private fun registerReceiver(){
         connectionBroadcastReceiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context?, intent: Intent?) {
                 when(intent?.action){
