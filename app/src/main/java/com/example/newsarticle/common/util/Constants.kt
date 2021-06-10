@@ -14,4 +14,9 @@ object Constants {
     object Keys {
         const val ARTICLE_KEY = "article"
     }
+
+    object Actions {
+        const val CONNECTION_BACK = "com.intent.action.CONNECTION_BACK"
+        const val CONNECTION_LOST = "com.intent.action.CONNECTION_LOST"
+    }
 }
